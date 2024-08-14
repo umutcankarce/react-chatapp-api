@@ -30,7 +30,7 @@ class LoginRequest extends FormRequest
     public function attributes()
     {
         return [
-            'email'    => 'E-Mail Adresi',
+            'email'    => 'E-Posta Adresi',
             'password' => 'Şifre',
         ];
     }

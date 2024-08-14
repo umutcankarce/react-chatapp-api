@@ -32,7 +32,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             "name"     => "Ad Soyad",
-            "email"    => "E-Mail Adresi",
+            "email"    => "E-Posta Adresi",
             "password" => "Şifre"
         ];
     }

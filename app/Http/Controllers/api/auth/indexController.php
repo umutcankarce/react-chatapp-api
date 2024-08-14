@@ -38,13 +38,14 @@ class indexController extends BaseController
 
     public function register(RegisterRequest $request)
     {
-        $data = $request->except("_token");
+        $data = $request->except("_token","password_confirmation");
+
         $data["password"] = Hash::make($data["password"]);
 
         $create = ClientModel::create($data);
 
         if($create){
-            return parent::success("Kullanıcı Kayıt İşlemi Başarılı.",[$create],201);
+            return parent::success("Kullanıcı Kayıt Eklendi.",[$create],201);
         }else {
             return parent::error("Kullanıcı Kayıt İşleminde Hata Oluştu.",[]);
         }
