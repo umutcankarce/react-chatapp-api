@@ -73,7 +73,7 @@ class indexController extends BaseController
                     "token_type"   => "Bearer",
                     "access_token" => $token
                 ]
-            ]);
+            ],200);
         }else {
             return response()->json([
                 "success"    => false,
@@ -85,7 +85,7 @@ class indexController extends BaseController
     public function logout(Request $request)
     {
         $client = $request->user();
-        $token = $client->token();
+        $token  = $client->token();
         $token->revoke();
         return parent::success("Sistemden Çıkış Yapıldı.");
     }
