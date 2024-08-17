@@ -73,7 +73,7 @@ class indexController extends BaseController
                     "token_type"   => "Bearer",
                     "access_token" => $token
                 ]
-            ],200);
+            ]);
         }else {
             return response()->json([
                 "success"    => false,

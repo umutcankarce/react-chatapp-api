@@ -12,7 +12,7 @@ class indexController extends BaseController
     public function index(Request $request)
     {
         $client = $request->user();
-        $clients = ClientModel::where("id","!==",$client->id)->paginate(10);
+        $clients = ClientModel::where("id","!=",$client->id)->paginate(10);
 
         return parent::success("Kullanıcılar Getirildi.",$clients);
     }
