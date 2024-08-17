@@ -19,7 +19,8 @@ class indexController extends BaseController
             ["id","=",$data["receiver_id"]],
         ])->first();
 
-        if(!$client){
+        if(!$client)
+        {
             return parent::error("Kullanıcı Bulunamadı.",[],404);
         }
     }
