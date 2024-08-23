@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67d057fef1820a72265a9463d11a3098",
+    "content-hash": "09af02ba0e5e56a3f9763da2465f370e",
     "packages": [
         {
             "name": "brick/math",
@@ -572,6 +572,82 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "elephantio/elephant.io",
+            "version": "v4.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ElephantIO/elephant.io.git",
+                "reference": "3941a473f5c0d3c1755bf63e7bdd9ac07578752f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ElephantIO/elephant.io/zipball/3941a473f5c0d3c1755bf63e7bdd9ac07578752f",
+                "reference": "3941a473f5c0d3c1755bf63e7bdd9ac07578752f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.2",
+                "psr/log": "^1.1 || ^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "monolog/monolog": "^2.8 || ^3.0",
+                "phpunit/phpunit": "^8.5 || ^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ElephantIO\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Baptiste Clavié",
+                    "email": "baptiste@wisembly.com",
+                    "homepage": "http://baptiste.xn--clavi-fsa.net/",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Guillaume Potier",
+                    "email": "guillaume@wisembly.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Toha",
+                    "email": "tohenk@yahoo.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Ludovic Barreca",
+                    "email": "ludogp2@gmail.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Elephant.IO Community",
+                    "role": "Contributors :)"
+                }
+            ],
+            "description": "Send events to a socket.io server through PHP",
+            "homepage": "https://elephantio.github.io/elephant.io/",
+            "keywords": [
+                "Socket.io",
+                "dialog",
+                "nodejs",
+                "real time",
+                "websocket"
+            ],
+            "support": {
+                "issues": "https://github.com/ElephantIO/elephant.io/issues",
+                "source": "https://github.com/ElephantIO/elephant.io/tree/v4.7.2"
+            },
+            "time": "2024-07-10T17:31:52+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -8876,5 +8952,5 @@
         "php": "^8.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

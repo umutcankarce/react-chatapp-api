@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('message_contents', function (Blueprint $table) {
             $table->id("mgc_id");
             $table->integer('mgc_messageId')->nullable();
-            $table->integer('mgc_senderId')->nullable();
+            $table->integer('mgc_sender')->nullable();
             $table->text('mgc_content')->nullable();
             $table->tinyInteger('mgc_isRead')->default(0)->nullable()->comment("0 okunmadı,1 okundu");
             $table->softDeletes();
