@@ -18,47 +18,44 @@ class indexController extends BaseController
         $data = $request->except("_token");
 
         $client = ClientModel::where([
-            ["id","!=",$user->id],
-            ["id","=",$data["receiver_id"]],
+            ["id", "!=", $user->id],
+            ["id", "=", $data['receiver_id']],
         ])->first();
 
-        if(!$client)
-        {
-            return parent::error("Kullanıcı Bulunamadı.",[],404);
-        }
-        else
-        {
-            ## Message Verify
-            $messageCount = MessageModel::where(function($c) use ($user,$data){
-                $c->where("mg_sender",$user->id);
-                $c->where("mg_receiver",$data["receiver_id"]);
-            })->orWhere(function($c) use ($user,$data){
-                $c->where("mg_receiver",$user->id);
-                $c->where("mg_sender",$data["receiver_id"]);
+        if (!$client) {
+            return parent::error("Kullanıcı bulunamadı", [], 404);
+        } else {
+            // MESAJ SORGULAMA
+            $message_count = MessageModel::where(function ($c) use ($user, $data) {
+                $c->where("mg_sender", $user->id);
+                $c->where("mg_receiver", $data['receiver_id']);
+            })->orWhere(function ($c) use ($user, $data) {
+                $c->where("mg_receiver", $user->id);
+                $c->where("mg_sender", $data['receiver_id']);
             })->count();
 
-            if($messageCount == 0)
-            {
+            if ($message_count == 0) {
                 $message_create = MessageModel::create([
-                    "mg_sender"   => $user->id,
-                    "mg_receiver" => $data["receiver_id"]
+                    "mg_sender" => $user->id,
+                    "mg_receiver" => $data['receiver_id']
                 ]);
 
                 $message_id = $message_create->mg_id;
-            }else{
-                $message_get = MessageModel::where(function($c) use ($user,$data){
-                $c->where("mg_sender",$user->id);
-                $c->where("mg_receiver",$data["receiver_id"]);
-                })->orWhere(function($c) use ($user,$data){
-                    $c->where("mg_receiver",$user->id);
-                    $c->where("mg_sender",$data["receiver_id"]);
+            } else {
+                $message_get = MessageModel::where(function ($c) use ($user, $data) {
+                    $c->where("mg_sender", $user->id);
+                    $c->where("mg_receiver", $data['receiver_id']);
+                })->orWhere(function ($c) use ($user, $data) {
+                    $c->where("mg_receiver", $user->id);
+                    $c->where("mg_sender", $data['receiver_id']);
                 })->first();
 
                 $message_id = $message_get->mg_id;
             }
-            return parent::success("Kullanıcı Getirildi.",[
-                "message_id"=> $message_id,
-                "receiver_id" => $client
+
+            return parent::success("Kullanıcı getirildi", [
+                "message_id" => $message_id,
+                "receiver_info" => $client
             ]);
         }
     }
