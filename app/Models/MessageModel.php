@@ -29,8 +29,10 @@ class MessageModel extends Model
         ->where("message_contents.mgc_isRead","=",0)
         ->where("message_contents.mgc_messageId","=",$message_id)
         ->count();
-        
+
         return $result;
     }
+
+
 
 }

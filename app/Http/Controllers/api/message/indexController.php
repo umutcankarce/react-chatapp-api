@@ -18,14 +18,13 @@ class indexController extends BaseController
         $data = $request->except("_token");
 
         $client = ClientModel::where([
-            ["id", "!=", $user->id],
-            ["id", "=", $data['receiver_id']],
+            ["id", "!=",$user->id],
+            ["id", "=", $data['receiver_id']]
         ])->first();
 
         if (!$client) {
-            return parent::error("Kullanıcı bulunamadı", [], 404);
+            return parent::error("Kullanıcı Bulunamadı.", [], 404);
         } else {
-            // MESAJ SORGULAMA
             $message_count = MessageModel::where(function ($c) use ($user, $data) {
                 $c->where("mg_sender", $user->id);
                 $c->where("mg_receiver", $data['receiver_id']);
@@ -53,7 +52,7 @@ class indexController extends BaseController
                 $message_id = $message_get->mg_id;
             }
 
-            return parent::success("Kullanıcı getirildi", [
+            return parent::success("Kullanıcı Getirildi.", [
                 "message_id" => $message_id,
                 "receiver_info" => $client
             ]);
